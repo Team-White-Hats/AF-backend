@@ -4,6 +4,7 @@ const logger = require("pino")();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
+const productRoutes = require("./src/routes/ProductRoutes");
 
 const app = express();
 dotenv.config();
@@ -45,6 +46,7 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
+app.use("/api/product",productRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
