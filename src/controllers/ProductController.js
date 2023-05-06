@@ -33,6 +33,7 @@ const fetchProductsByCategory = (req, res) => {
   });
 };
 
+
 const createProduct = (req, res) => {
   Product.create(req.body, (err, data) => {
     if (err) res.status(500).json({ error: err });

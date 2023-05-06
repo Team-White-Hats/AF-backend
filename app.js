@@ -6,6 +6,7 @@ const cors = require("cors");
 const expressSession = require("express-session");
 const productRoutes = require("./src/routes/ProductRoutes");
 const reviewRoutes = require("./src/routes/ReviewRoutes");
+const tourTripRoutes = require("./src/routes/TourTripRoute");
 
 const app = express();
 dotenv.config();
@@ -47,8 +48,14 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
-app.use("/api/product", productRoutes);
+
+
 app.use("/api/review", reviewRoutes);
+//Tour Trip API
+app.use("/api/tourtrip",tourTripRoutes);
+
+//Product API
+app.use("/api/product",productRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
