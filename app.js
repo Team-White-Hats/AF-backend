@@ -4,6 +4,7 @@ const logger = require("pino")();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
+const travelEventRoutes = require("./src/routes/travelEventRoutes");
 
 const app = express();
 dotenv.config();
@@ -32,6 +33,8 @@ const sessSettings = expressSession({
 app.use(sessSettings);
 const PORT = process.env.PORT || 5000;
 
+
+console.log(process.env.DB_URL);
 mongoose.connect(process.env.DB_URL, {
 	useNewUrlParser: true,
 });
@@ -45,6 +48,7 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
+app.use("/api/event",travelEventRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
