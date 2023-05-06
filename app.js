@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
 
+const tourTripRoutes = require("./src/routes/TourTripRoute");
+
 const app = express();
 dotenv.config();
 
@@ -45,6 +47,7 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
+app.use("/api/tourtrip",tourTripRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
