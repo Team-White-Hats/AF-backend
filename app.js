@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
 const productRoutes = require("./src/routes/ProductRoutes");
+const reviewRoutes = require("./src/routes/ReviewRoutes");
 const tourTripRoutes = require("./src/routes/TourTripRoute");
 
 const app = express();
@@ -14,7 +15,7 @@ app.use(
 	cors({
 		origin: "http://localhost:3000",
 		credentials: true,
-	})
+	}),
 );
 
 app.use(express.json());
@@ -47,6 +48,9 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
+
+
+app.use("/api/review", reviewRoutes);
 //Tour Trip API
 app.use("/api/tourtrip",tourTripRoutes);
 
