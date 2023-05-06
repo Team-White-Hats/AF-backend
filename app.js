@@ -4,7 +4,12 @@ const logger = require("pino")();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
+
 const travelEventRoutes = require("./src/routes/travelEventRoutes");
+const productRoutes = require("./src/routes/ProductRoutes");
+const reviewRoutes = require("./src/routes/ReviewRoutes");
+const tourTripRoutes = require("./src/routes/TourTripRoute");
+
 
 const app = express();
 dotenv.config();
@@ -13,7 +18,7 @@ app.use(
 	cors({
 		origin: "http://localhost:3000",
 		credentials: true,
-	})
+	}),
 );
 
 app.use(express.json());
@@ -49,6 +54,14 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/event",travelEventRoutes);
+
+
+app.use("/api/review", reviewRoutes);
+//Tour Trip API
+app.use("/api/tourtrip",tourTripRoutes);
+
+//Product API
+app.use("/api/product",productRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
