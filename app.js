@@ -47,7 +47,10 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
+//Tour Trip API
 app.use("/api/tourtrip",tourTripRoutes);
+
+//Product API
 app.use("/api/product",productRoutes);
 
 app.listen(PORT, () => {

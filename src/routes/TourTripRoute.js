@@ -30,10 +30,10 @@ router.delete("/delete/:tripId", deleteTourTripDetails);
 //get single Tour Trip Details by id
 router.get("/getTourTripById/:tripId", getSingleTourTripDetails);
 
-//fetch Tour Trip Details by place name
+//fetch Tour Trip Details by Place Name
 router.get("/fetch/:placeName", fetchTourTripDetailsByPlaceName);
 
-//fetch Tour Trip Details by status type
+//fetch Tour Trip Details by Status Type
 router.get("/fetch/:statusType", fetchTourTripDetailsByStatusType);
 
 module.exports = router;
