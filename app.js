@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
 const productRoutes = require("./src/routes/ProductRoutes");
+const tourTripRoutes = require("./src/routes/TourTripRoute");
 
 const app = express();
 dotenv.config();
@@ -46,6 +47,7 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
+app.use("/api/tourtrip",tourTripRoutes);
 app.use("/api/product",productRoutes);
 
 app.listen(PORT, () => {
