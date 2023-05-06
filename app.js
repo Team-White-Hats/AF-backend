@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
 const productRoutes = require("./src/routes/ProductRoutes");
+const reviewRoutes = require("./src/routes/ReviewRoutes");
 
 const app = express();
 dotenv.config();
@@ -13,7 +14,7 @@ app.use(
 	cors({
 		origin: "http://localhost:3000",
 		credentials: true,
-	})
+	}),
 );
 
 app.use(express.json());
@@ -46,7 +47,8 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
-app.use("/api/product",productRoutes);
+app.use("/api/product", productRoutes);
+app.use("/api/review", reviewRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
