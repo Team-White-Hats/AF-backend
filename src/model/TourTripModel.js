@@ -48,5 +48,4 @@ const TourTripSchema = new mongoose.Schema({
 });
 
 const TourTrip = mongoose.model("TourTripManagement", TourTripSchema);
-
 module.exports = TourTrip;
