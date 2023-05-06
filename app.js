@@ -4,7 +4,7 @@ const logger = require("pino")();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const expressSession = require("express-session");
-
+const productRoutes = require("./src/routes/ProductRoutes");
 const tourTripRoutes = require("./src/routes/TourTripRoute");
 
 const app = express();
@@ -48,6 +48,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/tourtrip",tourTripRoutes);
+app.use("/api/product",productRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
