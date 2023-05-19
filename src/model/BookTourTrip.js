@@ -23,7 +23,6 @@ const BookTourTripSchema = new mongoose.Schema({
 
 	date: {
 		type: Date,
-		required: true,
 	},
 
 	gender: {
