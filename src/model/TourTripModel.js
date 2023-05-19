@@ -36,6 +36,11 @@ const TourTripSchema = new mongoose.Schema({
 		required: true,
 	},
 
+	productImages: {
+		type: String,
+		required: true,
+	},
+
     statusType: {
 		type: String,
 		required: true,
