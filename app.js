@@ -10,6 +10,7 @@ const productRoutes = require("./src/routes/ProductRoutes");
 const reviewRoutes = require("./src/routes/ReviewRoutes");
 const tourTripRoutes = require("./src/routes/TourTripRoute");
 const bookyourTripRoutes = require("./src/routes/BookTourTripRoutes");
+const OrderProduct =require("./src/routes/OrderRoutes");
 
 
 const app = express();
@@ -66,6 +67,9 @@ app.use("/api/product",productRoutes);
 
 //Tour Trip API
 app.use("/api/tourtripbook",bookyourTripRoutes);
+
+//Order API
+app.use("/api/order",OrderProduct);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
