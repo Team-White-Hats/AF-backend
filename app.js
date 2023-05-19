@@ -7,6 +7,9 @@ const expressSession = require("express-session");
 const productRoutes = require("./src/routes/ProductRoutes");
 const reviewRoutes = require("./src/routes/ReviewRoutes");
 const tourTripRoutes = require("./src/routes/TourTripRoute");
+const userRoutes = require("./src/routes/UserRoutes");
+const adminRoutes = require("./src/routes/AdminRoutes");
+const loginRoutes = require("./src/routes/LoginRoutes");
 
 const app = express();
 dotenv.config();
@@ -56,6 +59,15 @@ app.use("/api/tourtrip", tourTripRoutes);
 
 //Product API
 app.use("/api/product", productRoutes);
+
+//User API
+app.use("/api/user", userRoutes);
+
+//Admin API
+app.use("/api/admin", adminRoutes);
+
+//Admin API
+app.use("/api/login", loginRoutes);
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
