@@ -11,6 +11,10 @@ const reviewSchema = new Schema({
         type: String,
         required: true,
       },
+      reviewHeader: {
+        type: String,
+        required: true,
+      },
       review: {
         type: String,
         required: true,
@@ -20,6 +24,7 @@ const reviewSchema = new Schema({
       required: true,
     }},
 );
+
 
 const Review = mongoose.model("Review", reviewSchema);
 

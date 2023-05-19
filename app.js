@@ -55,15 +55,16 @@ app.get("/", (req, res) => {
 	res.status(200).json({ messsage: "Server is running!" });
 });
 
+
 app.use("/api/event",travelEventRoutes);
 
-
 app.use("/api/review", reviewRoutes);
+
 //Tour Trip API
-app.use("/api/tourtrip",tourTripRoutes);
+app.use("/api/tourtrip", tourTripRoutes);
 
 //Product API
-app.use("/api/product",productRoutes);
+app.use("/api/product", productRoutes);
 
 //Tour Trip API
 app.use("/api/tourtripbook",bookyourTripRoutes);
