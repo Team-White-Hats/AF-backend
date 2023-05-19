@@ -11,6 +11,10 @@ const reviewSchema = new Schema({
         type: String,
         required: true,
       },
+      reviewHeader: {
+        type: String,
+        required: true,
+      },
       review: {
         type: String,
         required: true,
