@@ -24,12 +24,13 @@ const login = async (req, res) => {
 			email: req.body.email,
 		}); // if it is a admin
 
-		console.log("userData", userData);
-
 		if (userData) {
 			// code fot testing purposes
 
 			localStorage.setItem("isUser", userData.isUser);
+			console.log("===================");
+			console.log("Logged as a User");
+			console.log("===================");
 
 			// decypting the user password
 			const decryptedPassword = CryptoJS.AES.decrypt(
@@ -54,20 +55,23 @@ const login = async (req, res) => {
 						{ expiresIn: "3d" },
 					);
 
-					const json = {
+					res.header("authentication", accessToken).send({
 						authentication: accessToken,
 						role: "user",
 						roleData: userData,
-					};
+					});
 
 					// if the user exist : show data in the user variable
-					res.status(200).json(json);
+					res.status(200).json({ accessToken });
 				}
 			} catch (err) {
 				res.status(400).json(err.message); // error handling
 			}
 		} else if (adminData) {
 			localStorage.setItem("isAdmmin", adminData.isAdmin);
+			console.log("=========================");
+			console.log("Logged as a Admin");
+			console.log("=========================");
 
 			// decypting the patient password
 			const decryptedPassword = CryptoJS.AES.decrypt(
@@ -108,10 +112,7 @@ const login = async (req, res) => {
 		} else {
 			res.status(500).json("Wrong credentials !");
 		}
-	} catch (err) {
-		console.log(err);
-		res.status(400).json(err.message);
-	}
+	} catch (err) {}
 };
 
 let refreshTokens = [];
