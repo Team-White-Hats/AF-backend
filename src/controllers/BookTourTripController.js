@@ -30,7 +30,7 @@ const updateBookTourTripDetails = async (req, res) => {
 
 		tourTrip = await BookTourTrip.findByIdAndUpdate(tripId, req.body);
 		res.status(201).json({
-			updated: "Tour Trip Details updated successfully",
+			updated: "Booking Details updated successfully",
 		});
 	} catch (error) {
 		res.status(400).json(error.message);

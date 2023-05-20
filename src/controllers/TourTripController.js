@@ -4,6 +4,7 @@ const getAllTourTripDetails = async (req, res) => {
 	try {
 		const cors = await TourTrip.find();
 		res.json(cors);
+		console.log(cors[cors.length - 1]._id.toString(), "body");		
 	} catch (error) {
 		res.status(400).json(error);
 	}
