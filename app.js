@@ -14,6 +14,7 @@ const adminRoutes = require("./src/routes/AdminRoutes");
 const loginRoutes = require("./src/routes/LoginRoutes");
 const bookyourTripRoutes = require("./src/routes/BookTourTripRoutes");
 const OrderProduct =require("./src/routes/OrderRoutes");
+const registerEventRoutes = require("./src/routes/registerEventRoutes");
 
 const app = express();
 dotenv.config();
@@ -60,6 +61,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/event",travelEventRoutes);
 
+app.use("/api/register/event", registerEventRoutes);
+
 app.use("/api/review", reviewRoutes);
 
 //Tour Trip API
@@ -82,6 +85,8 @@ app.use("/api/tourtripbook",bookyourTripRoutes);
 
 //Order API
 app.use("/api/order",OrderProduct);
+
+
 
 app.listen(PORT, () => {
 	logger.info(`Server is running on PORT: ${PORT}`);
